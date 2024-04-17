@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    const validateNewItem = (remaining) => {
+        while(true){
+            let answer = Boolean(prompt("Do you wish to buy something else? Type something if so, if not, leave this empty"))
+            if(!answer){
+                break
+            }
+            let newItem = parseFloat(prompt("Cost of the new item: "))
+            if(isNaN(newItem)){
+                throw new Error("New item's cost cannot be NaN, please try again :c")
+            }
+            if(newItem > remaining){
+                console.log("You can't buy this item!");
+                break
+            } else{
+                remaining -= newItem
+                console.log(`You can buy this item, and your new remaining is: ${remaining}`)
+            }
+        }
+    }
+
+    while(true){
+        let initialBudget = parseFloat(prompt("Please enter your initial budget: "))
+        if(isNaN(initialBudget)){
+            throw new Error("Initial Budget cannot be NaN, please try again :c")
+        } 
+
+        let estimatedCosts = {"accommodation": 0, "transport": 0, "food": 0}
+        let accommodation = parseFloat(prompt("Accommodation budget: "))
+        
+        if(isNaN(accommodation)){
+                throw new Error("Accommodation budget cannot be NaN, please try again :c")
+            } 
+        
+        estimatedCosts["accommodation"] = accommodation
+        let transport = parseFloat(prompt("Transport budget: "))
+
+        if(isNaN(transport)){
+            throw new Error("Transport budget cannot be NaN, please try again :c")
+        }
+        
+        estimatedCosts["transport"] = transport
+        let food = parseFloat(prompt("Food budget: "))
+
+        if(isNaN(food)){
+                throw new Error("Accommodation budget cannot be NaN, please try again :c")
+            }
+
+        estimatedCosts["food"] = food
+
+        if((accommodation + food + transport) > initialBudget){
+            throw new Error("Budgets don't match, please try again :c")
+        }
+        let remaining = initialBudget - (accommodation + food + transport)
+
+        validateNewItem(remaining)
+    }
+</script>
+<body>
+    
+</body>
+</html>
