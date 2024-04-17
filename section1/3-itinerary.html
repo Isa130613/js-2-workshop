@@ -26,6 +26,27 @@
         }
     }
 
+    const validateMultipleItems = (remaining) =>{
+        let items = prompt("Please enter the prices of the items you want to buy separated by spaces: ").split(" ")
+
+        for(let i = 0; i < items.length; i++){
+            if(isNan(parseFloat(items[i]))){
+                console.log("Prices must be numbers, please try again");
+                validateMultipleItems(remaining)
+            }
+            items[i] = parseFloat(items[i])
+        }
+
+        items = items.sort((a, b) => a - b)
+        console.log(`The most economic option for you is: ${items[0]}`);
+        if(items < remaining){
+            remaining -= items[0]
+            console.log(`And it is in your budget! Your remaining is: ${remaining}`);
+        } else{
+            console.log("But unfortunately, none of these items are inside your budget :c");
+        }
+    }
+
     while(true){
         let initialBudget = parseFloat(prompt("Please enter your initial budget: "))
         if(isNaN(initialBudget)){
@@ -60,6 +81,10 @@
         }
         let remaining = initialBudget - (accommodation + food + transport)
 
+        let answer = Boolean(prompt("If you want to validate multiple items, please type something, if not, leave it empty: "))
+        if(answer){
+            validateMultipleItems(remaining)
+        }
         validateNewItem(remaining)
     }
 </script>
