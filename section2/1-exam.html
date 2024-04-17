@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    while(true){
+        let answer = Boolean(prompt("Type something if you want to exit: "))
+        if(answer){
+            break
+        }
+        let energy = Boolean(prompt("Enter something if you have energy: "))
+        let weather = Boolean(prompt("Enter something if the weather is good: "))
+        let load = Boolean(prompt("Enter something if you have a high work load"))
+    
+        if(!energy){
+            alert("You should rest!")
+            console.log("rest");
+        } else if(load && !weather){
+            alert("You should stay at home an work in personal projects!")
+            console.log("work");
+        } else{
+            alert("You should go running!")
+            console.log("run");
+        }
+    }
+</script>
+<body>
+    
+</body>
+</html>
