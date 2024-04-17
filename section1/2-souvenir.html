@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  let souvenirs = [];
+
+while (true) {
+  let answer = prompt('Do you wish to enter a new souvenir? ');
+
+  if (answer[0] == 'y') {
+    let newItem = [];
+
+    try {
+      let name = prompt("Please enter your item's name: ");
+      newItem.push(name);
+      let price = parseFloat(prompt("Please enter your item's price: "));
+      newItem.push(price);
+      let available = Boolean(
+        prompt("Is your item available? Please enter 'true' or 'false': ")
+      );
+      newItem.push(available);
+      souvenirs.push(newItem);
+    } catch (error) {
+      console.log(
+        'Seems like you enter an invalid data, please try again :c',
+        error
+      );
+    }
+  } else {
+    break;
+  }
+}
+</script>
+<body>
+  
+</body>
+</html>
