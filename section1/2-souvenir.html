@@ -18,12 +18,18 @@ while (true) {
       let name = prompt("Please enter your item's name: ");
       newItem.push(name);
       let price = parseFloat(prompt("Please enter your item's price: "));
+      if(isNaN(price)){
+        throw new Error("Price cannot be a NaN value")
+        continue
+      }
       newItem.push(price);
       let available = Boolean(
-        prompt("Is your item available? Please enter 'true' or 'false': ")
+        prompt("Is your item available? Please enter something for 'yes', leave it empty for 'no': ")
       );
       newItem.push(available);
       souvenirs.push(newItem);
+      
+      console.log(`Your souvenirs are: ${souvenirs}`)
     } catch (error) {
       console.log(
         'Seems like you enter an invalid data, please try again :c',
