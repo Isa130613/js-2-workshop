@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    const weather = prompt("How's the weather? Please choose between 'rainy', 'sunny' or 'normal'")
+    const space = Boolean("Do you have any space left? If not, leave this empty: ")
+    const weightLimit = parseFloat(prompt("Type the weight limit of your luggage: "))
+    if(isNaN(weightLimit)){
+        throw new Error("The weight limit cannot be NaN")
+    }
+
+    if(!space){
+        alert("You don't have any space left")
+        throw new Error("no space left")
+    }
+    let items = prompt("Enter the items you want to put separated by spaces: ").split(" ")
+    let weights = []
+    let total = 0
+
+    for(const i in items){
+        let weight = parseFloat(prompt(`Please type the weight of ${i}`))
+        if(isNaN(weight)){
+            throw new Error("weight cannot be NaN")
+        }
+        weights.push(weight)
+        total += weight
+    }
+
+    if(total <= weightLimit && space){
+        alert("You can put everything you want!")
+    } else if(!space){
+        alert("You don't have any space left, please consider rearranging your stuff")
+    } else{
+        for(const i in items.length){
+            if(weather == "rainy"){
+                if((items[i] == "umbrella" || items[i] == "coat") && weights[i] < weightLimit){
+                    alert(`You may pack ${items[i]}`)
+                    weightLimit -= weights[i]
+                }
+            } else if(weather == "sunny"){
+                if((items[i] == "sunglasses" || items[i] == "swimsuit") && weights[i] < weightLimit){
+                    alert(`You may pack ${items[i]}`)
+                    weightLimit -= weights[i]
+                }
+            } else{
+                if(items[i] != "umbrella" && items[i] != "coat" && items[i] != "sunglasses" && items[i] != "swimsuit" && weights[i] < weightLimit){
+                    alert(`You can pack ${items[i]}`)
+                    weightLimit -= weights[i]
+                }
+            }
+        }
+    }
+
+
+</script>
+<body>
+    
+</body>
+</html>
