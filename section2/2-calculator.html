@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let dailyBudget = parseFloat(prompt("What's your daily budget?"))
+    if(isNaN(dailyBudget)){
+        throw new Error("Daily budget cannot be NaN")
+    }
+    let eatOutside = parseFloat(prompt("Cost of eating outside: "))
+    if(isNaN(eatOutside)){
+        throw new Error("Cost of eating outside cannot be NaN")
+    }
+    let buyBooks = parseFloat(prompt("Cost of buying books: "))
+    if(isNaN(buyBooks)){
+        throw new Error("Cost of buying books cannot be NaN")
+    }
+    let dailySavings = parseFloat(prompt("Minimum daily savings: "))
+    if(isNaN(dailySavings)){
+        throw new Error("Daily savings cannot be NaN")
+    }
+    let remaining = dailyBudget - dailySavings
+
+    if(dailyBudget == dailySavings){
+        alert("You only have enough money to save your daily amount")
+    } else if(remaining == eatOutside || remaining == buyBooks){
+        alert("You can only do one of the two options")
+    } else{
+        alert("You can choose to spend your money however you want")
+    }
+</script>
+<body>
+    
+</body>
+</html>
